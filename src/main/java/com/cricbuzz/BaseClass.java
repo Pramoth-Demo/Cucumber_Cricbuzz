@@ -33,7 +33,7 @@ public class BaseClass {
 	
 	public void enterURL() {
 		
-		driver.get(properties.getProperty("url"));
+		driver.get("https://www.cricbuzz.com/");
 	}
 	
 	

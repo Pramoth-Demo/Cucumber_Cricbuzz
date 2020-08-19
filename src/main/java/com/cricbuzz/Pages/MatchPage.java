@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -85,8 +86,12 @@ public class MatchPage extends BaseClass{
 	}
 	
 	public void ClickOnLiveMatch() {
-		
+		try {
 		liveMatch.click();
+		}
+		catch(StaleElementReferenceException e) {
+			e.getMessage();
+		}
 	}
 	
 	public void ClickOnScorecard() {
@@ -99,9 +104,12 @@ public class MatchPage extends BaseClass{
 		writeScorecard.FeedingTitleOfTheMatch();
 		writeScorecard.FeedingMatchStatus();
 		writeScorecard.Feeding_Scorecard();
-		
 		Write_Scorecard.closeExcel();
 		
+	}
+	
+	public void quitBrowser() {
+		driver.quit();
 	}
 
 }

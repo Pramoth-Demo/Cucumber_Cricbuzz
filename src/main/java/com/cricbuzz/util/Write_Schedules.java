@@ -2,6 +2,7 @@ package com.cricbuzz.util;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -75,10 +76,15 @@ public class Write_Schedules extends BaseClass{
 			
 			date=SchedulePage.matchDate.get(i).getText();
 			
-			String details1=SchedulePage.overAll.get(i).getText().toString();
+			String detail1=driver.findElement(By.xpath("//*[@id='international-list']/div["+(i+1)+"]")).getText().toString();
+			detailNew=detail1.replace(date, "");
 			
-			details = details1.replace(date,"");  
-		
+			
+			sheet.createRow(rowCount).createCell(0).setCellValue(date);
+			sheet.getRow(rowCount).createCell(1).setCellValue(detailNew);
+			
+			rowCount++;
+			
 			}
 		
 		    XSSFRow dateRow=sheet.createRow(0);                                                    // Setting font Style for Headers
@@ -106,23 +112,14 @@ public class Write_Schedules extends BaseClass{
 				detailsCell.setCellStyle(detailsStyle);
 				detailsCell.setCellValue("Match Details"); 
 				
-				
-				sheet.createRow(rowCount).createCell(0).setCellValue(date);
-				sheet.getRow(rowCount).createCell(1).setCellValue(details);
-				
-				
-				
-				String detail1=driver.findElement(By.xpath("//*[@id='international-list']/div[1]")).getText().toString();
-				String str2=detail1.substring(0, 16);
-				detailNew=detail1.replace(str2, "");
-				sheet.getRow(1).getCell(1).setCellValue(detailNew);
-				
-				rowCount++;
 			
-		}}
+			
+		}
+	
+	}
 	
 	
-	public void FeedingAustraliaSeries() {
+	public void FeedingAustraliaSeries() throws IOException {
 		
 		 int rowCount=1;
 		 int index=0;
@@ -187,40 +184,10 @@ public class Write_Schedules extends BaseClass{
 	  }
 	      
 	}
+		
+
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	public static void closeExcel() throws IOException {                                // Closing the excel file
@@ -229,5 +196,38 @@ public class Write_Schedules extends BaseClass{
 		workbook.write(fos);
 		workbook.close();
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

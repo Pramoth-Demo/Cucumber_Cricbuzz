@@ -3,6 +3,7 @@ package com.cricbuzz.util;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -44,7 +45,7 @@ public class Write_Scorecard extends BaseClass {
 	static 	int noOfBatsmen=0;
 	
 	static XSSFColor color=new XSSFColor(Color.BLUE);
-	static XSSFColor headerWhite=new XSSFColor(Color.WHITE);
+	static XSSFColor headerWhite=new XSSFColor(Color.white);
 	static XSSFColor headerColor=new XSSFColor(Color.LIGHT_GRAY);
 	static XSSFColor headerTextcolor=new XSSFColor(Color.gray);
 	
@@ -94,7 +95,7 @@ public class Write_Scorecard extends BaseClass {
 		
 		 String colour=null;
 			
-		
+		try {
 		try {
 			WebElement status1= MatchPage.matchStatusLive;
 			colour="Red";
@@ -123,11 +124,14 @@ public class Write_Scorecard extends BaseClass {
 			font.setColor(statusColor);
 			cell.setCellStyle(style);
 			cell.setCellValue(status); 
-		
+		}
+		catch(NoSuchElementException e) {
+			e.getMessage();
+		}
 	}
 	
 	
-	public void Feeding_Scorecard() {                                                                               // Batting Scorecard
+	public void Feeding_Scorecard() throws IOException {                                                                               // Batting Scorecard
 		
 		
 		
@@ -642,6 +646,13 @@ public class Write_Scorecard extends BaseClass {
 			
 			e.getMessage();
 		}	
+	
+	catch(NoSuchElementException e) {
+		e.getMessage();
+	}
+	
+
+	
 	}
 	
 	
@@ -651,6 +662,7 @@ public class Write_Scorecard extends BaseClass {
 
 
 	public static void closeExcel() throws IOException {                                // Closing the excel file
+
 
 	    fos=new FileOutputStream(source);
 		workbook.write(fos);

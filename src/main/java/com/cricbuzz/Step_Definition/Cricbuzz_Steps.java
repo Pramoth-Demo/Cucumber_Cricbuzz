@@ -3,6 +3,7 @@
 package com.cricbuzz.Step_Definition;
 
 import java.io.IOException;
+import java.sql.Driver;
 
 import com.cricbuzz.BaseClass;
 import com.cricbuzz.Pages.HomePage;
@@ -85,8 +86,12 @@ public void click_on_series() throws IOException  {
 public void fetching_International_tour_of_Australia() throws IOException {
 	
 	seriesPage.FetchingAustraliaTourDetails();
+	
   
 }
+
+
+   // SCENARIO 3
 
 @Then("^Go to HomePage by click on Cricbuzz Logo$")
 public void go_to_HomePage_by_click_on_Cricbuzz_Logo() throws IOException  {
@@ -110,6 +115,12 @@ public void click_on_scorecard()  {
 public void Fetching_scorecard_details() throws IOException {
 	
 	matchPage.FetchingScorecard();
+}
+
+@Then("^Quit the browser$")
+public void quit_the_browser() {
+	
+	matchPage.quitBrowser();
 }
 	
 	

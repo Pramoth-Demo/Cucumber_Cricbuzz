@@ -22,4 +22,5 @@ Scenario: 3_Fetching live scorecard
 Then Go to HomePage by click on Cricbuzz Logo
 Then Click on first live match
 Then Click on scorecard
-And Fetching scorecard details
+Then Fetching scorecard details
+And Quit the browser

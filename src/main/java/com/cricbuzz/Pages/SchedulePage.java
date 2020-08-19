@@ -53,7 +53,7 @@ public class SchedulePage extends BaseClass {
 		
 		write.FeedingSchedules();                                                            // Calling Feeding schedule details into excel function
 		
-	
+		Write_Schedules.closeExcel();
 		
 		
 	}

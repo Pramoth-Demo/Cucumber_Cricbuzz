@@ -43,6 +43,7 @@ public class SeriesPage extends BaseClass {
 		
 		write.FeedingAustraliaSeries();
 		
+		Write_Schedules.closeExcel();
 		
 		
 	}
